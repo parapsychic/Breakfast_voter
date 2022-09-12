@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1078990156595",
+    "project_id": "breakfast-voter-a7a35",
+    "storage_bucket": "breakfast-voter-a7a35.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1078990156595:android:019bbe97df847b37240446",
+        "android_client_info": {
+          "package_name": "com.example.breakfast_voter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1078990156595-l6ciu5i06q479mj99tpjkgedtkk537e1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD0IFaMUQT89wh3GqjrPkt36KbGkMQRIS0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1078990156595-l6ciu5i06q479mj99tpjkgedtkk537e1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
