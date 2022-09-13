@@ -23,6 +23,7 @@ mixin _$User {
   String get uid => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String get companyID => throw _privateConstructorUsedError;
+  String get phone => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -33,7 +34,7 @@ mixin _$User {
 abstract class $UserCopyWith<$Res> {
   factory $UserCopyWith(User value, $Res Function(User) then) =
       _$UserCopyWithImpl<$Res>;
-  $Res call({String uid, String name, String companyID});
+  $Res call({String uid, String name, String companyID, String phone});
 }
 
 /// @nodoc
@@ -49,6 +50,7 @@ class _$UserCopyWithImpl<$Res> implements $UserCopyWith<$Res> {
     Object? uid = freezed,
     Object? name = freezed,
     Object? companyID = freezed,
+    Object? phone = freezed,
   }) {
     return _then(_value.copyWith(
       uid: uid == freezed
@@ -63,6 +65,10 @@ class _$UserCopyWithImpl<$Res> implements $UserCopyWith<$Res> {
           ? _value.companyID
           : companyID // ignore: cast_nullable_to_non_nullable
               as String,
+      phone: phone == freezed
+          ? _value.phone
+          : phone // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -72,7 +78,7 @@ abstract class _$$_UserCopyWith<$Res> implements $UserCopyWith<$Res> {
   factory _$$_UserCopyWith(_$_User value, $Res Function(_$_User) then) =
       __$$_UserCopyWithImpl<$Res>;
   @override
-  $Res call({String uid, String name, String companyID});
+  $Res call({String uid, String name, String companyID, String phone});
 }
 
 /// @nodoc
@@ -89,6 +95,7 @@ class __$$_UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
     Object? uid = freezed,
     Object? name = freezed,
     Object? companyID = freezed,
+    Object? phone = freezed,
   }) {
     return _then(_$_User(
       uid: uid == freezed
@@ -103,6 +110,10 @@ class __$$_UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
           ? _value.companyID
           : companyID // ignore: cast_nullable_to_non_nullable
               as String,
+      phone: phone == freezed
+          ? _value.phone
+          : phone // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -110,7 +121,11 @@ class __$$_UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_User implements _User {
-  _$_User({required this.uid, required this.name, required this.companyID});
+  _$_User(
+      {required this.uid,
+      required this.name,
+      required this.companyID,
+      required this.phone});
 
   factory _$_User.fromJson(Map<String, dynamic> json) => _$$_UserFromJson(json);
 
@@ -120,10 +135,12 @@ class _$_User implements _User {
   final String name;
   @override
   final String companyID;
+  @override
+  final String phone;
 
   @override
   String toString() {
-    return 'User(uid: $uid, name: $name, companyID: $companyID)';
+    return 'User(uid: $uid, name: $name, companyID: $companyID, phone: $phone)';
   }
 
   @override
@@ -133,7 +150,8 @@ class _$_User implements _User {
             other is _$_User &&
             const DeepCollectionEquality().equals(other.uid, uid) &&
             const DeepCollectionEquality().equals(other.name, name) &&
-            const DeepCollectionEquality().equals(other.companyID, companyID));
+            const DeepCollectionEquality().equals(other.companyID, companyID) &&
+            const DeepCollectionEquality().equals(other.phone, phone));
   }
 
   @JsonKey(ignore: true)
@@ -142,7 +160,8 @@ class _$_User implements _User {
       runtimeType,
       const DeepCollectionEquality().hash(uid),
       const DeepCollectionEquality().hash(name),
-      const DeepCollectionEquality().hash(companyID));
+      const DeepCollectionEquality().hash(companyID),
+      const DeepCollectionEquality().hash(phone));
 
   @JsonKey(ignore: true)
   @override
@@ -161,7 +180,8 @@ abstract class _User implements User {
   factory _User(
       {required final String uid,
       required final String name,
-      required final String companyID}) = _$_User;
+      required final String companyID,
+      required final String phone}) = _$_User;
 
   factory _User.fromJson(Map<String, dynamic> json) = _$_User.fromJson;
 
@@ -171,6 +191,8 @@ abstract class _User implements User {
   String get name;
   @override
   String get companyID;
+  @override
+  String get phone;
   @override
   @JsonKey(ignore: true)
   _$$_UserCopyWith<_$_User> get copyWith => throw _privateConstructorUsedError;

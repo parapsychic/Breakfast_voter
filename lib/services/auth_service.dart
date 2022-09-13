@@ -6,8 +6,8 @@ import 'package:uuid/uuid.dart';
 class AuthService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
-  Future<String> signupUser(
-      String name, String email, String password, String companyID) async {
+  Future<String> signupUser(String name, String email, String password,
+      String companyID, String phone) async {
     String res = "Some error occurred";
 
     try {
@@ -15,7 +15,7 @@ class AuthService {
           email: email, password: password);
 
       String uid = cred.user!.uid;
-      FirestoreUser().addNewUser(uid, name, companyID);
+      FirestoreUser().addNewUser(uid, name, companyID, phone);
       res = "success";
     } catch (e) {
       res = e.toString();

@@ -5,10 +5,12 @@ import 'package:uuid/uuid.dart';
 class FirestoreUser {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
-  Future<String> addNewUser(String uid, String name, String companyID) async {
+  Future<String> addNewUser(
+      String uid, String name, String companyID, String phone) async {
     String res = "Something went wrong";
     try {
-      User user = User(uid: uid, name: name, companyID: companyID);
+      User user =
+          User(uid: uid, name: name, companyID: companyID, phone: phone);
 
       await _firestore.collection("users").doc(uid).set(user.toJson());
       res = "success";
@@ -21,15 +23,15 @@ class FirestoreUser {
   Future<User> getUser(
     String uid,
   ) async {
-    User user = User(uid: "ERROR", name: "ERROR", companyID: "ERROR");
+    User? user;
     try {
       final doc = await _firestore.collection("users").doc(uid).get();
-      if (doc.exists) {
-        user = User.fromJson(doc.data()!);
-      }
+      if (doc.data() != null) user = User.fromJson(doc.data()!);
+      return user!;
     } catch (e) {
-      User user = User(uid: "ERROR", name: e.toString(), companyID: "ERROR");
+      User user = User(
+          uid: "ERROR", name: e.toString(), companyID: "ERROR", phone: "ERROR");
     }
-    return user;
+    return user!;
   }
 }

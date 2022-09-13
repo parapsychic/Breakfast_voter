@@ -9,6 +9,7 @@ class User with _$User {
     required String uid,
     required String name,
     required String companyID,
+    required String phone,
   }) = _User;
 
   factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);

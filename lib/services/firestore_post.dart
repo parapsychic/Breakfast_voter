@@ -109,7 +109,7 @@ class FirestorePost {
         return list[0];
       }
       list.sort(((a, b) => a!.upvotes.compareTo(b!.upvotes)));
-      post = list[0];
+      post = list.last;
     }
     return post;
   }

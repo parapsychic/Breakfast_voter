@@ -1,3 +1,4 @@
+import 'package:breakfast_voter/screens/otp_screen.dart';
 import 'package:breakfast_voter/screens/voting_screen.dart';
 import 'package:breakfast_voter/services/auth_service.dart';
 import 'package:breakfast_voter/widgets/show_snackbar.dart';
@@ -19,6 +20,7 @@ class _SignupScreenState extends State<SignupScreen> {
   final _emailEditingController = TextEditingController();
   final _passEditingController = TextEditingController();
   final _companyEditingController = TextEditingController();
+  final _phoneEditingController = TextEditingController();
 
   bool _loading = false;
 
@@ -29,6 +31,7 @@ class _SignupScreenState extends State<SignupScreen> {
     _emailEditingController.dispose();
     _passEditingController.dispose();
     _companyEditingController.dispose();
+    _phoneEditingController.dispose();
     super.dispose();
   }
 
@@ -37,11 +40,26 @@ class _SignupScreenState extends State<SignupScreen> {
       _loading = true;
     });
 
+    final status = await Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) =>
+              OTPScreen(phone: _phoneEditingController.text.trim()),
+        ));
+
+    if (status != "OK") {
+      setState(() {
+        _loading = false;
+      });
+      return;
+    }
+
     String res = await AuthService().signupUser(
       _nameEditingController.text,
       _emailEditingController.text,
       _passEditingController.text,
       _companyEditingController.text,
+      _phoneEditingController.text,
     );
 
     setState(() {
@@ -70,6 +88,10 @@ class _SignupScreenState extends State<SignupScreen> {
             textEditingController: _companyEditingController,
             hintText: "Company ID",
             textInputType: TextInputType.text),
+        TextFieldInput(
+            textEditingController: _phoneEditingController,
+            hintText: "Phone",
+            textInputType: TextInputType.number),
         TextFieldInput(
             textEditingController: _emailEditingController,
             hintText: "Email",

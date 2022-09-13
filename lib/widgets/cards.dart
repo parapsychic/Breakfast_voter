@@ -20,20 +20,20 @@ class FoodCard extends StatefulWidget {
 
 class _FoodCardState extends State<FoodCard> {
   Color _iconColor = Colors.grey;
-  String _user = "NULL";
+  String _user = "NAN";
 
   @override
   void initState() {
     super.initState();
-    getUser();
+    //getUser();
   }
 
-  getUser() async {
-    final user = await FirestoreUser().getUser(widget.post.opUid);
-    setState(() {
-      _user = user.name;
-    });
-  }
+//  getUser() async {
+//    final user = await FirestoreUser().getUser(widget.post.opUid);
+//    setState(() {
+//      _user = user.name;
+//    });
+//  }
 
   upvoteFood() async {
     String res = await FirestoreUpvotes().addUpvote(widget.post.postID);
@@ -52,7 +52,7 @@ class _FoodCardState extends State<FoodCard> {
     return Card(
         child: ListTile(
       title: Text(widget.post.foodName),
-      subtitle: Text(_user),
+      //subtitle: Text(_user),
       trailing: widget.winner
           ? Text(widget.post.upvotes.toString())
           : IconButton(

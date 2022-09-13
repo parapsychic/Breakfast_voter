@@ -90,7 +90,7 @@ class _CountdownTimerState extends State<CountdownTimer> {
                 "Most Upvoted Post: ",
                 style: TextStyle(fontSize: 23, fontWeight: FontWeight.bold),
               ),
-              if (winnerPost == null)
+              if (winnerPost != null)
                 FoodCard(
                   post: winnerPost!,
                   winner: true,
